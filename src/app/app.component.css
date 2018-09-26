@@ -1,0 +1,43 @@
+.row {
+    height: 60px;
+    background: #313940;
+    display: flex;
+    align-items: center;
+    width: 101%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    height: 100%;
+}
+
+ul li {
+    display: inline-block;
+    color: #b1adad;
+    margin: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.search_text {
+    height: 37px;
+    border: none;
+    padding-left: 10px;
+}
+
+.submit_btn {
+    height: 37px;
+    border: none;
+    margin: 7px 8px 8px 0px;
+    cursor: pointer;
+}
+
+.active {
+    color: white !important;
+}
+
+.container {
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
