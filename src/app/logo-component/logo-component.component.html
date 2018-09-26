@@ -12,23 +12,23 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>John</td>
-            <td>John</td>
-            <td>John</td>
-            <td>john@example.com</td>
-            <td>John</td>
-            <td><button type="button" class="btn btn-info">Edit</button></td>
-            <td><button type="button" class="btn btn-danger">Delete</button></td>
+        <tr *ngFor="let user_data of form_data; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{user_data?.firstName}}</td>
+            <td>{{user_data?.lastName}}</td>
+            <td>{{user_data?.dob}}</td>
+            <td>{{user_data?.email}}</td>
+            <td>{{user_data?.country}}</td>
+            <td><button type="button" class="btn btn-info" (click)="edit_user(user_data, i)">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deleteData(i)">Delete</button></td>
         </tr>
     </tbody>
 </table>
-<button type="button" class="btn btn-primary newBtn">New</button>
+<button type="button" class="btn btn-primary newBtn" (click)="new_form()">New</button>
 
 
 
-<form [formGroup]="userForm">
+<form [formGroup]="userForm" *ngIf="onNew">
     <div class="row df_margin">
         <div class="col-md-2"> <label for="text">First Name</label></div>
         <div class="col-md-10"> <input type="text" formControlName="firstName" class="form-control"></div>
@@ -39,18 +39,27 @@
     </div>
     <div class="row">
         <div class="col-md-2"> <label for="text">DOB</label></div>
-        <div class="col-md-10"><input type="text" formControlName="dob" class="form-control"></div>
+        <div class="col-md-10"><input type="date" formControlName="dob" class="form-control"></div>
     </div>
     <div class="row">
         <div class="col-md-2"><label for="email">Email address:</label></div>
-        <div class="col-md-10"> <input type="text" formControlName="email" class="form-control" id="email"></div>
+        <div class="col-md-10"> <input type="email" formControlName="email" class="form-control" id="email"></div>
     </div>
     <div class="row">
         <div class="col-md-2"> <label for="text">Country</label></div>
-        <div class="col-md-10"> <input type="text" formControlName="country" class="form-control" id="text"></div>
+        <div class="col-md-10">
+            <select class="form-control" id="sel2" formControlName="country">
+               <option value="India">India</option>
+               <option value="Indonesia">Indonesia</option>
+               <option value="Japan">Japan</option>
+               <option value="China">China</option>
+               <option value="America">America</option>
+            </select>
+
+        </div>
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid" (click)="saveData()">Save</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid" (click)="saveData(btn_text)">{{btn_text}}</button>
         <button type="button" class="btn btn-danger" style="margin-left: 20px;">Cancel</button>
     </div>
 </form>
