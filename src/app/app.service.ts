@@ -15,5 +15,4 @@ export class App_service {
     onEnter(data) {
         this.search_data.next(data);
     }
-
 }

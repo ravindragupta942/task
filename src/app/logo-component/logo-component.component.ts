@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { App_service } from '../app.service';
-
 
 @Component({
   selector: 'app-logo-component',
   templateUrl: './logo-component.component.html',
-  styleUrls: ['./logo-component.component.css']
+  styleUrls: ['./logo-component.component.css'],
 })
 
 export class LogoComponentComponent implements OnInit {
@@ -17,6 +16,7 @@ export class LogoComponentComponent implements OnInit {
   btn_text: string = 'Save';
   updateIndex: any;
 
+  searchText: string = ``;
 
   constructor(public fb: FormBuilder, public App_ser: App_service) {
     this.formCode();
@@ -24,8 +24,7 @@ export class LogoComponentComponent implements OnInit {
 
   ngOnInit() {
     this.App_ser.input_search_data.subscribe((user) => {
-      let filteredElements = this.form_data.filter(element => element.firstName == user);
-      console.log("check asdsd ", user);
+      this.searchText = user;
     })
   }
 
