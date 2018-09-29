@@ -24,6 +24,7 @@ ul li {
     height: 37px;
     border: none;
     padding-left: 10px;
+    width: 100%;
 }
 
 .submit_btn {
